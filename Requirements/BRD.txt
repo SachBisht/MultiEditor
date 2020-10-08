@@ -30,3 +30,4 @@ Steps:
 	- Lable8	: "Replace all occurences of stringA in File?"
 	- Button2	: "Replace"
 	- Lable9	: *Show if the program succeeded*
+	- Progress	: *Show a progress bar/ processing/ loading icon*
