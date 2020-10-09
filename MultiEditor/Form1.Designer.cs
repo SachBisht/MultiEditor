@@ -43,6 +43,7 @@
             this.procReplace = new System.Diagnostics.Process();
             this.btnReplace = new System.Windows.Forms.Button();
             this.lblSuccess = new System.Windows.Forms.Label();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl1
@@ -71,7 +72,8 @@
             // 
             this.filePicker.Location = new System.Drawing.Point(359, 85);
             this.filePicker.Name = "filePicker";
-            this.filePicker.Size = new System.Drawing.Size(181, 20);
+            this.filePicker.ReadOnly = true;
+            this.filePicker.Size = new System.Drawing.Size(219, 20);
             this.filePicker.TabIndex = 2;
             // 
             // txtStringA
@@ -109,6 +111,7 @@
             this.btnSubmit.TabIndex = 6;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // procSubmit
             // 
@@ -195,11 +198,22 @@
             this.lblSuccess.TabIndex = 12;
             this.lblSuccess.Text = "Failed";
             // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(577, 84);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 21);
+            this.btnBrowse.TabIndex = 13;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.lblSuccess);
             this.Controls.Add(this.btnReplace);
             this.Controls.Add(this.label1);
@@ -238,6 +252,7 @@
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label lbl4;
         private System.Diagnostics.Process procReplace;
+        private System.Windows.Forms.Button btnBrowse;
     }
 }
 
