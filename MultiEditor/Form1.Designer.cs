@@ -38,8 +38,8 @@
             this.procSubmit = new System.Diagnostics.Process();
             this.lbl4 = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPositions = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
             this.procReplace = new System.Diagnostics.Process();
             this.btnReplace = new System.Windows.Forms.Button();
             this.lblSuccess = new System.Windows.Forms.Label();
@@ -133,6 +133,7 @@
             this.lbl4.Size = new System.Drawing.Size(195, 15);
             this.lbl4.TabIndex = 7;
             this.lbl4.Text = "Count of string A found in file:";
+            this.lbl4.Visible = false;
             // 
             // lblCount
             // 
@@ -144,28 +145,31 @@
             this.lblCount.Size = new System.Drawing.Size(15, 15);
             this.lblCount.TabIndex = 8;
             this.lblCount.Text = "0";
+            this.lblCount.Visible = false;
             // 
-            // label1
+            // lblPositions
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Turquoise;
-            this.label1.Font = new System.Drawing.Font("Footlight MT Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(356, 417);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 15);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "0";
+            this.lblPositions.AutoSize = true;
+            this.lblPositions.BackColor = System.Drawing.Color.Turquoise;
+            this.lblPositions.Font = new System.Drawing.Font("Footlight MT Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPositions.Location = new System.Drawing.Point(356, 417);
+            this.lblPositions.Name = "lblPositions";
+            this.lblPositions.Size = new System.Drawing.Size(15, 15);
+            this.lblPositions.TabIndex = 10;
+            this.lblPositions.Text = "0";
+            this.lblPositions.Visible = false;
             // 
-            // label2
+            // lbl5
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Footlight MT Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 417);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 15);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Positions of string A found in file:";
+            this.lbl5.AutoSize = true;
+            this.lbl5.BackColor = System.Drawing.Color.Transparent;
+            this.lbl5.Font = new System.Drawing.Font("Footlight MT Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl5.Location = new System.Drawing.Point(13, 417);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(210, 15);
+            this.lbl5.TabIndex = 9;
+            this.lbl5.Text = "Positions of string A found in file:";
+            this.lbl5.Visible = false;
             // 
             // procReplace
             // 
@@ -185,6 +189,7 @@
             this.btnReplace.TabIndex = 11;
             this.btnReplace.Text = "Replace all";
             this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnReplace.Visible = false;
             // 
             // lblSuccess
             // 
@@ -197,6 +202,7 @@
             this.lblSuccess.Size = new System.Drawing.Size(56, 22);
             this.lblSuccess.TabIndex = 12;
             this.lblSuccess.Text = "Failed";
+            this.lblSuccess.Visible = false;
             // 
             // btnBrowse
             // 
@@ -216,8 +222,8 @@
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.lblSuccess);
             this.Controls.Add(this.btnReplace);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblPositions);
+            this.Controls.Add(this.lbl5);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.lbl4);
             this.Controls.Add(this.btnSubmit);
@@ -247,8 +253,8 @@
         private System.Diagnostics.Process procSubmit;
         private System.Windows.Forms.Label lblSuccess;
         private System.Windows.Forms.Button btnReplace;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPositions;
+        private System.Windows.Forms.Label lbl5;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label lbl4;
         private System.Diagnostics.Process procReplace;
