@@ -1,6 +1,8 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -70,6 +72,10 @@ namespace MultiEditor
                     //Search for stringA in the File.
                     SearchStringInFile();
                 }
+                else
+                {
+                    return;
+                }
             }
             SearchStringInFile();
         }
@@ -95,21 +101,30 @@ namespace MultiEditor
             
             var count = 0;
             var positions = string.Empty;
+            var indices = new List<int>();
             using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (BufferedStream bs = new BufferedStream(fs))
             using (StreamReader sr = new StreamReader(bs))
             {
                 string line;
-                while ((line = sr.ReadLine()) != null)
+                line = sr.ReadToEnd();
+                indices = line.GetIndicesOfPatternMatches(stringA);
+            }
+
+            //Generate positions string to show
+            if(indices.Count > 0)
+            {
+                foreach(var index in indices)
                 {
-                    //TODO fix the search logic!!
-                    if (line.Contains(stringA))
-                    {
-                        count++;
-                        positions += line.IndexOfAny(stringA.ToCharArray()) > -1 ? line.IndexOfAny(stringA.ToCharArray()).ToString() + ", " : string.Empty;
-                    }
+                    positions += index.ToString() + ", ";
+                }
+                positions = positions.Trim();
+                if(positions.EndsWith(",")){
+                    positions = positions.Remove(positions.Length - 1);
                 }
             }
+            //Get count of the searched string
+            count = indices.Count;
             lblCount.Text = count.ToString();
             lblPositions.Text = positions;
             lblSuccess.Text = "Success";
