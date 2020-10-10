@@ -44,6 +44,7 @@
             this.btnReplace = new System.Windows.Forms.Button();
             this.lblSuccess = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.lblReplace = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl1
@@ -83,6 +84,7 @@
             this.txtStringA.Name = "txtStringA";
             this.txtStringA.Size = new System.Drawing.Size(293, 85);
             this.txtStringA.TabIndex = 3;
+            this.txtStringA.TextChanged += new System.EventHandler(this.txtStringA_TextChanged);
             // 
             // txtStringB
             // 
@@ -91,6 +93,7 @@
             this.txtStringB.Name = "txtStringB";
             this.txtStringB.Size = new System.Drawing.Size(293, 85);
             this.txtStringB.TabIndex = 5;
+            this.txtStringB.TextChanged += new System.EventHandler(this.txtStringB_TextChanged);
             // 
             // lbl3
             // 
@@ -190,18 +193,19 @@
             this.btnReplace.Text = "Replace all";
             this.btnReplace.UseVisualStyleBackColor = true;
             this.btnReplace.Visible = false;
+            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
             // 
             // lblSuccess
             // 
             this.lblSuccess.AutoSize = true;
-            this.lblSuccess.BackColor = System.Drawing.Color.Firebrick;
+            this.lblSuccess.BackColor = System.Drawing.Color.ForestGreen;
             this.lblSuccess.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblSuccess.Font = new System.Drawing.Font("Footlight MT Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSuccess.Location = new System.Drawing.Point(356, 463);
+            this.lblSuccess.Location = new System.Drawing.Point(690, 354);
             this.lblSuccess.Name = "lblSuccess";
-            this.lblSuccess.Size = new System.Drawing.Size(56, 22);
+            this.lblSuccess.Size = new System.Drawing.Size(71, 22);
             this.lblSuccess.TabIndex = 12;
-            this.lblSuccess.Text = "Failed";
+            this.lblSuccess.Text = "Success";
             this.lblSuccess.Visible = false;
             // 
             // btnBrowse
@@ -214,11 +218,25 @@
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
+            // lblReplace
+            // 
+            this.lblReplace.AutoSize = true;
+            this.lblReplace.BackColor = System.Drawing.Color.ForestGreen;
+            this.lblReplace.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblReplace.Font = new System.Drawing.Font("Footlight MT Light", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReplace.Location = new System.Drawing.Point(690, 439);
+            this.lblReplace.Name = "lblReplace";
+            this.lblReplace.Size = new System.Drawing.Size(80, 22);
+            this.lblReplace.TabIndex = 14;
+            this.lblReplace.Text = "Replaced";
+            this.lblReplace.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.lblReplace);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.lblSuccess);
             this.Controls.Add(this.btnReplace);
@@ -259,6 +277,7 @@
         private System.Windows.Forms.Label lbl4;
         private System.Diagnostics.Process procReplace;
         private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Label lblReplace;
     }
 }
 

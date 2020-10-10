@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MultiEditor
@@ -23,6 +24,7 @@ namespace MultiEditor
 
         private void btnBrowse_Click(object sender, System.EventArgs e)
         {
+            ShowStep2(false);
             var fileNameBox = filePicker;
             OpenFileDialog openFileDialog1 = new OpenFileDialog
             {
@@ -53,21 +55,21 @@ namespace MultiEditor
             var stringA = txtStringA;
             var stringB = txtStringB;
             ShowStep2(false);
-            if(fileSelector.Text.Length < 1)
+            if (fileSelector.Text.Length < 1)
             {
                 MessageBox.Show("Please select a file!");
                 return;
             }
-            if(stringA.Text.Trim().Length < 1)
+            if (stringA.Text.Trim().Length < 1)
             {
                 MessageBox.Show("Please input search string!");
                 stringA.Text = string.Empty;
                 return;
             }
-            if(stringB.Text.Length < 1)
+            if (stringB.Text.Length < 1)
             {
                 var selectedOption = MessageBox.Show("The replacing string is blank. The search string will be cleared on clicking replace button. Continue?", "Action requested", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if(selectedOption == DialogResult.Yes)
+                if (selectedOption == DialogResult.Yes)
                 {
                     //Search for stringA in the File.
                     SearchStringInFile();
@@ -98,7 +100,7 @@ namespace MultiEditor
 
         private void SearchAlgo(string filePath, string stringA)
         {
-            
+
             var count = 0;
             var positions = string.Empty;
             var indices = new List<int>();
@@ -112,14 +114,15 @@ namespace MultiEditor
             }
 
             //Generate positions string to show
-            if(indices.Count > 0)
+            if (indices.Count > 0)
             {
-                foreach(var index in indices)
+                foreach (var index in indices)
                 {
                     positions += index.ToString() + ", ";
                 }
                 positions = positions.Trim();
-                if(positions.EndsWith(",")){
+                if (positions.EndsWith(","))
+                {
                     positions = positions.Remove(positions.Length - 1);
                 }
             }
@@ -138,6 +141,60 @@ namespace MultiEditor
             lbl5.Visible = toShow;
             lblPositions.Visible = toShow;
             lblSuccess.Visible = toShow;
+            btnReplace.Visible = toShow;
+            if (!toShow)
+            {
+                lblReplace.Visible = toShow;
+            }
+        }
+
+        private void btnReplace_Click(object sender, EventArgs e)
+        {
+            var matchCount = lblCount.Text;
+            if (!string.IsNullOrEmpty(matchCount) && matchCount.Length > 0)
+            {
+                if (int.Parse(matchCount) == 0)
+                {
+                    MessageBox.Show("Nothing to replace.");
+                    return;
+                }
+                else
+                {
+                    ReplaceSearchedPatternsInFile();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nothing to replace.");
+                return;
+            }
+        }
+
+        private void ReplaceSearchedPatternsInFile()
+        {
+            var filePath = filePicker.Text;
+            var stringToReplace = txtStringA.Text;
+            var newString = txtStringB.Text;
+            string fileText;
+            using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (BufferedStream bs = new BufferedStream(fs))
+            using (StreamReader sr = new StreamReader(bs))
+            {
+                fileText = sr.ReadToEnd();
+                fileText = fileText.Replace(stringToReplace, newString);
+            }
+            File.WriteAllText(filePath, fileText);
+            lblReplace.Visible = true;
+        }
+
+        private void txtStringA_TextChanged(object sender, EventArgs e)
+        {
+            ShowStep2(false);
+        }
+
+        private void txtStringB_TextChanged(object sender, EventArgs e)
+        {
+            ShowStep2(false);
         }
     }
 }
