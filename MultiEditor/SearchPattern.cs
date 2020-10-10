@@ -45,6 +45,8 @@ namespace MultiEditor
                     matchedIndex.Add(i - j);
                     Console.WriteLine((i - j).ToString());
                     j = lpsArray[j - 1];
+                    //Code to skip the already matched string in the file.
+                    i = i + j;
                 }
                 else if (i < N && text[i] != pattern[j])
                 {
