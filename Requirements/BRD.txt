@@ -12,7 +12,7 @@ Steps:
 	- Two string inputs.
 	- File reader.
 	- Searcher of stringA.
-	- Lables for Count and positions of stringA in the file.
+	- Lables for Count and Positions of stringA in the file.
 	- Replacing of stringA with either blank string, or with stringB, as per the user request.
 	
 - Design for Phase 1:
