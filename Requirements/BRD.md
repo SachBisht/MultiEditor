@@ -2,20 +2,20 @@
 
 Phase 1: Windows app that can select a text file, search for a provided string in the file, and replace or delete the provided text.
 
-Steps:
+- Steps towards development 
 	- Write Requirements for Phase 1.
 	- Design the application UI.
 	- Implement functionalities as per the requirements.
 	
-- Requirements for Phase 1:
+- Requirements for Phase 1
 	- A file selector.
 	- Two string inputs.
 	- File reader.
 	- Searcher of stringA.
-	- Lables for Count and positions of stringA in the file.
+	- Lables for Count and Positions of stringA in the file.
 	- Replacing of stringA with either blank string, or with stringB, as per the user request.
 	
-- Design for Phase 1:
+- Design for Phase 1
 	- Lable1	: "Select file:"
 	- Picker1	: *File Selector*
 	- Lable2	: "Enter string to search:"
@@ -30,3 +30,4 @@ Steps:
 	- Lable8	: "Replace all occurences of stringA in File?"
 	- Button2	: "Replace"
 	- Lable9	: *Show if the program succeeded*
+	- Progress	: *Show a progress bar/ processing/ loading icon*
